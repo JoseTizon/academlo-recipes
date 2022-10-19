@@ -8,6 +8,7 @@ const  { port } = require('./config')
 //? Routes
 const userRouter = require('./users/users.router')
 const authRouter = require('./auth/auth.router')
+const initModels = require('./models/initModels')
 
 //? Initial configs
 const app = express()
@@ -39,6 +40,8 @@ db.sync()
     .catch(err => {
         console.log(err);
     })
+
+initModels()
 
 app.listen(port, () =>{
     console.log(`Server started at port ${port}!`)
